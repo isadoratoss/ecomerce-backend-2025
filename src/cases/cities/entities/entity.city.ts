@@ -1,17 +1,50 @@
-import { Column,Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+
+
+
+import { State } from "./entity.state";
+
+
+
+
 
 @Entity('city')
-export class Product {
+
+
+export class City {
+
+
   @PrimaryGeneratedColumn('uuid')
+
+
   id: string;
 
-  @Column({nullable: false})
+
+
+
+
+  @Column({ length: 60, nullable: false })
+
+
   name: string;
 
-  @Column('text', {nullable: true})
+
+
+
+
+  @Column({ length: 7, nullable: false })
+
+
   ibge: string;
 
-  @Column('decimal', {nullable: false, precision: 10, scale: 2})
-  acronym: number;
+
+
+
+
+  @ManyToOne(() => State, {eager: true, nullable: false})
+
+
+  state: State;
+
 
 }

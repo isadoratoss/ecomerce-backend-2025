@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, HttpCode, HttpException, HttpStatus, Param, ParseUUIDPipe, Post, Put } from "@nestjs/common";
-import { City } from "./.entity";
-import { CityService } from "./city.service";
+import { City } from "src/cities/entities/city.entity";
+import { CityService } from "src/cities/services/city.service";
 
 @Controller('citys')
 export class BrandController {
@@ -25,7 +25,7 @@ export class BrandController {
  
   @Post()
   create(@Body() : City) : Promise<City> {
-    return this.service.save(city );
+    return this.service.save(city);
   }
 
   @Put(':id')

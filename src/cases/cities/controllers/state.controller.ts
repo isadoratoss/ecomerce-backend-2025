@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, HttpCode, HttpException, HttpStatus, Param, ParseUUIDPipe, Post, Put } from "@nestjs/common";
-import { Brand } from "./brand.entity";
-import { BrandService } from "./brand.service";
+import { Brand } from "src/cases/brands/brand.entity";
+import { BrandService } from "../services/city.service";
 
 @Controller('brands')
 export class BrandController {

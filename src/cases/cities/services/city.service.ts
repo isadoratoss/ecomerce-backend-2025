@@ -1,7 +1,8 @@
 import { Repository } from "typeorm";
-import { City } from "./city.service";
+import { City } from "src/cities/entities/city.entity";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Injectable } from "@nestjs/common";
+import { Brand } from "src/cases/brands/brand.entity";
 
 @Injectable()
 export class BrandService {

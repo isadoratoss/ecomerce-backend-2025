@@ -2,6 +2,8 @@ import { Repository } from "typeorm";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Injectable } from "@nestjs/common";
 import { StatementColumnMetadata } from "node:sqlite";
+import { State } from "src/cities/entities/state.entity";
+import { Brand } from "src/cases/brands/brand.entity";
 
 @Injectable()
 export class BrandService {
