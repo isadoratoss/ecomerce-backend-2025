@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CategoryModule } from './cases/categories/category.module';
 import { BrandModule } from './cases/brands/brand.module';
-import { CustomerModule } from './cases/customers/customer.module';
+import { CustomerModule } from './customers/customer.module';
 import { ConfigModule } from '@nestjs/config';
 
 @Module({
