@@ -1,44 +1,44 @@
 import { Body, Controller, Delete, Get, HttpCode, HttpException, HttpStatus, Param, ParseUUIDPipe, Post, Put } from "@nestjs/common";
-import { Brand } from "src/cases/brands/brand.entity";
-import { BrandService } from "../services/city.service";
+import { State } from "../entities/state.entity";
+import { StateService } from "../services/state.service";
 
-@Controller('brands')
-export class BrandController {
+@Controller('states')
+export class StateController {
 
-  constructor(private readonly service: BrandService) {}
+  constructor(private readonly service: StateService) {}
 
   @Get()
-  findAll(): Promise<Brand[]> {
+  findAll(): Promise<State[]> {
     return this.service.findAll();
   }
 
   @Get(':id')
-  async findById(@Param('id', ParseUUIDPipe) id: string): Promise<Brand> {
+  async findById(@Param('id', ParseUUIDPipe) id: string): Promise<State> {
     const found = await this.service.findById(id);
 
     if (!found) {
-      throw new HttpException('Brand not found', HttpStatus.NOT_FOUND);
+      throw new HttpException('State not found', HttpStatus.NOT_FOUND);
     }
 
     return found;
   }
  
   @Post()
-  create(@Body() brand: Brand) : Promise<Brand> {
-    return this.service.save(brand);
+  create(@Body() state: State) : Promise<State> {
+    return this.service.save(state);
   }
 
   @Put(':id')
-  async update(@Param('id', ParseUUIDPipe) id: string, @Body() brand: Brand): Promise<Brand> {
+  async update(@Param('id', ParseUUIDPipe) id: string, @Body() state: State): Promise<State> {
     const found = await this.service.findById(id);
 
     if (!found) {
-      throw new HttpException('Brand not found', HttpStatus.NOT_FOUND);
+      throw new HttpException('State not found', HttpStatus.NOT_FOUND);
     }
 
-    brand.id = id;
+    state.id = id;
 
-    return this.service.save(brand);
+    return this.service.save(state);
   }
 
   @Delete(':id')
@@ -47,7 +47,7 @@ export class BrandController {
     const found = await this.service.findById(id);
 
     if (!found) {
-      throw new HttpException('Brand not found', HttpStatus.NOT_FOUND);
+      throw new HttpException('State not found', HttpStatus.NOT_FOUND);
     }
 
     return this.service.remove(id);

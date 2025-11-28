@@ -1,28 +1,28 @@
 import { Repository } from "typeorm";
+import { Brand } from "./brand.entity";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Injectable } from "@nestjs/common";
-import { State } from "../entities/state.entity";
 
 @Injectable()
-export class StateService {
+export class BrandService {
 
   constructor(
-    @InjectRepository(State)
-    private repository: Repository<State>
+    @InjectRepository(Brand)
+    private repository: Repository<Brand>
   ) {}
 
-  findAll(): Promise<State[]> {
+  findAll(): Promise<Brand[]> {
     return this.repository.find();
   }
 
-  findById(id: string): Promise<State | null> {
+  findById(id: string): Promise<Brand | null> {
     return this.repository.findOneBy({id: id});
   }
-  
-  save(state: State): Promise<State> {
-    return this.repository.save(state);
+
+  save(brand: Brand): Promise<Brand> {
+    return this.repository.save(brand);
   }
-  
+
   async remove(id: string): Promise<void> {
     await this.repository.delete(id);
   }

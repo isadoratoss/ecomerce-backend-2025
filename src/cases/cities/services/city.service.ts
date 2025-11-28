@@ -1,11 +1,10 @@
 import { Repository } from "typeorm";
-import { City } from "src/cities/entities/city.entity";
+import { City } from "../entities/city.entity";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Injectable } from "@nestjs/common";
-import { Brand } from "src/cases/brands/brand.entity";
 
 @Injectable()
-export class BrandService {
+export class CityService {
 
   constructor(
     @InjectRepository(City)
@@ -20,7 +19,7 @@ export class BrandService {
     return this.repository.findOneBy({id: id});
   }
 
-  save(City: City): Promise<Brand> {
+  save(city: City): Promise<City> {
     return this.repository.save(city);
   }
 

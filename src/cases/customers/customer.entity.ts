@@ -4,17 +4,20 @@ import { City } from "../cities/entities/city.entity";
 @Entity('customer')
 export class Customer {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  id?: string;
 
   @Column({nullable: false})
   name: string;
 
   @Column({length: 250, nullable: true})
-  address: string;
+  address?: string;
 
   @Column({length: 8, nullable: true})
-  zipcode: string;
+  zipcode?: string;
 
   @ManyToOne(() => City, {eager: true, nullable: true})
-  city: City;
+  city?: City;
+
+  @Column({type:"uuid", nullable: false})
+  supabaseId: string;
 }
